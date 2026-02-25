@@ -1,0 +1,9 @@
+import {
+  "sennenki/reisen",
+  "moonbitlang/async",
+  "moonbitlang/core/json",
+}
+
+options(
+  is_main: true,
+)
