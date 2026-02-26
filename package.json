@@ -1,5 +1,5 @@
 {
-  "name": "reisen_template",
+  "name": "reisen_demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,8 +12,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pixi-live2d-display": "^0.4.0",
-    "pixi.js": "^8.16.0"
+    "@pixi/core": "6.5.10",
+    "@pixi/display": "6.5.10",
+    "@pixi/loaders": "6.5.10",
+    "@pixi/math": "6.5.10",
+    "@pixi/sprite": "6.5.10",
+    "@pixi/utils": "6.5.10",
+    "pixi-live2d-display": "0.4.0",
+    "pixi.js": "6.5.10"
   },
   "devDependencies": {
     "vite": "^7.3.1"
