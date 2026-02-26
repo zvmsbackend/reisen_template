@@ -5,6 +5,13 @@ if (typeof window !== "undefined") {
     window.PIXI = PIXI;
 }
 
+const okResult = (value) => ({ ok: true, value, error: "" });
+const errResult = (error) => ({
+    ok: false,
+    value: null,
+    error: error instanceof Error ? error.message : String(error ?? "Unknown error"),
+});
+
 const makeCompatApplication = () => {
     const holder = {
         _app: null,
@@ -68,22 +75,30 @@ export const newFilter = (vertexSrc, fragmentSrc) => {
 };
 
 export const loadTexturePromise = (source) =>
-    new Promise((resolve, reject) => {
-        const loader = new PIXI.Loader();
-        loader.add(source, source).load((_, resources) => {
-            const texture = resources[source]?.texture;
-            if (texture) {
-                resolve(texture);
-            } else {
-                reject(new Error(`Failed to load texture: ${source}`));
-            }
-        });
-        loader.onError.once((err) => reject(err));
+    new Promise((resolve) => {
+        try {
+            const loader = new PIXI.Loader();
+            loader.add(source, source).load((_, resources) => {
+                const texture = resources[source]?.texture;
+                if (texture) {
+                    resolve(okResult(texture));
+                } else {
+                    resolve(errResult(new Error(`Failed to load texture: ${source}`)));
+                }
+            });
+            loader.onError.once((err) => resolve(errResult(err)));
+        } catch (err) {
+            resolve(errResult(err));
+        }
     });
 
 export const loadLive2dModel = async (source) => {
-    const model = await Live2DModel.from(source);
-    return model;
+    try {
+        const model = await Live2DModel.from(source);
+        return okResult(model);
+    } catch (err) {
+        return errResult(err);
+    }
 };
 
 export const live2dMotion = async (model, group, index) => {
