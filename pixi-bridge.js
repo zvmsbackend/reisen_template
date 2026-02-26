@@ -94,7 +94,9 @@ export const loadTexturePromise = (source) =>
 
 export const loadLive2dModel = async (source) => {
     try {
-        const model = await Live2DModel.from(source);
+        const model = await Live2DModel.from(source, {
+            crossOrigin: "anonymous"
+        });
         return okResult(model);
     } catch (err) {
         return errResult(err);
