@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { Live2DModel } from "pixi-live2d-display";
+import { Live2DModel, MotionPriority } from "pixi-live2d-display";
 
 if (typeof window !== "undefined") {
     window.PIXI = PIXI;
@@ -108,7 +108,8 @@ export const live2dMotion = async (model, group, index) => {
         return false;
     }
     try {
-        const ok = await model.motion(group, index);
+        model.internalModel.motionManager.stopAllMotions();
+        const ok = await (index === undefined ? model.motion(group) : model.motion(group, index));
         return !!ok;
     } catch (_) {
         return false;
