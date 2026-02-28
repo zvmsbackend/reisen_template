@@ -29,6 +29,7 @@ async fn main {
     script_factory,
     () => state,
     "ui-root",
+    assets,
     render_sync~,
     event_hook=audio.as_event_hook(),
   )
