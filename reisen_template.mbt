@@ -1,18 +1,36 @@
+///|
+using @core {script}
+
+///|
+using @ui {type AudioDom}
+
+///|
+using @assets {type AssetStore}
+
+///|
+using @app {type ScriptFactory, type AppController, run_browser_app_loop}
+
+///|
+using @state {type GameState}
+
+///|
+using @presenter {make_pixi_render_sync_hook_from_canvas}
+
+///|
 async fn main {
-  let assets = @reisen.AssetStore::new()
-  let audio = @reisen.AudioDom::new()
+  let assets = AssetStore::new()
+  let audio = AudioDom::new_with_store(assets)
 
-  let script : @reisen.Script[Unit] = try! @reisen.script(builder => ())
+  let script_factory : ScriptFactory[Unit] = () => script(_builder => ())
 
-  let state = @reisen.GameState::new(())
-  let render_sync = @reisen.make_pixi_render_sync_hook_from_canvas(
-    "gl-canvas", assets,
-  ).unwrap()
-  let controller = @reisen.AppController::new(
-    script,
+  let state = GameState::new(())
+  let render_sync = make_pixi_render_sync_hook_from_canvas("gl-canvas", assets).unwrap()
+  let controller = AppController::new(
+    script_factory,
     () => state,
     "ui-root",
     render_sync~,
+    event_hook=audio.as_event_hook(),
   )
-  @reisen.run_browser_app_loop(controller)
+  run_browser_app_loop(controller)
 }

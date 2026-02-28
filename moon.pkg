@@ -1,5 +1,10 @@
 import {
-  "sennenki/reisen",
+  "sennenki/reisen/core",
+  "sennenki/reisen/ui",
+  "sennenki/reisen/presenter",
+  "sennenki/reisen/assets",
+  "sennenki/reisen/app",
+  "sennenki/reisen/state",
   "moonbitlang/async",
   "moonbitlang/core/json",
 }
