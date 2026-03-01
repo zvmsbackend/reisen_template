@@ -554,6 +554,22 @@ html, body {
   gap: 8px;
 }
 
+[data-reisen="settings-row"] [data-reisen-setting="language"] {
+  min-width: 210px;
+  padding: 8px 10px;
+  background: var(--input-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  outline: none;
+}
+
+[data-reisen="settings-row"] [data-reisen-setting="language"]:hover,
+[data-reisen="settings-row"] [data-reisen-setting="language"]:focus-visible {
+  background: var(--button-hover);
+  border-color: var(--border-hover);
+}
+
 [data-reisen="settings-tabs"] {
   display: flex;
   gap: 8px;
