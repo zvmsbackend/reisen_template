@@ -570,6 +570,11 @@ html, body {
   border-color: var(--border-hover);
 }
 
+[data-reisen="settings-row"] [data-reisen-setting="language"] option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
 [data-reisen="settings-tabs"] {
   display: flex;
   gap: 8px;
