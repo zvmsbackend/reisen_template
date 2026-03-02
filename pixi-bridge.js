@@ -1,5 +1,4 @@
 import * as PIXI from "pixi.js";
-import { Live2DModel, MotionPriority } from "pixi-live2d-display";
 
 if (typeof window !== "undefined") {
     window.PIXI = PIXI;
@@ -94,9 +93,14 @@ export const loadTexturePromise = (source) =>
 
 export const loadLive2dModel = async (source) => {
     try {
-        const model = await Live2DModel.from(source, {
-            crossOrigin: "anonymous"
-        });
+        let Live2DModule;
+        try {
+            Live2DModule = await import('pixi-live2d-display');
+        } catch (e) {
+            return errResult(new Error('Live2D runtime "pixi-live2d-display" not available'));
+        }
+        const Live2DModel = Live2DModule.Live2DModel || Live2DModule.default || Live2DModule;
+        const model = await Live2DModel.from(source, { crossOrigin: "anonymous" });
         return okResult(model);
     } catch (err) {
         return errResult(err);
