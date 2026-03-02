@@ -8,7 +8,12 @@ using @ui {type AudioDom}
 using @assets {type AssetStore}
 
 ///|
-using @app {type ScriptFactory, type AppController, run_browser_app_loop}
+using @app {
+  type ScriptFactory,
+  type AppController,
+  run_browser_app_loop,
+  default_app_error_handler,
+}
 
 ///|
 using @state {type GameState}
@@ -33,5 +38,7 @@ async fn main {
     render_sync~,
     event_hook=audio.as_event_hook(),
   )
-  run_browser_app_loop(controller)
+  run_browser_app_loop(controller) catch {
+    err => default_app_error_handler(err.message())
+  }
 }
