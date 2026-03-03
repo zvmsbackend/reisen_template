@@ -191,7 +191,8 @@ html, body {
 
 [data-reisen="start-menu"],
 [data-reisen="settings-menu"],
-[data-reisen="gallery-menu"] {
+[data-reisen="gallery-menu"],
+[data-reisen="credits-menu"] {
   position: absolute;
   top: 0;
   left: 0;
@@ -208,22 +209,75 @@ html, body {
 
 [data-reisen="start-menu"]:not([style*="background-image"]),
 [data-reisen="settings-menu"]:not([style*="background-image"]),
-[data-reisen="gallery-menu"]:not([style*="background-image"]) {
+[data-reisen="gallery-menu"]:not([style*="background-image"]),
+[data-reisen="credits-menu"]:not([style*="background-image"]) {
   background: var(--bg-secondary);
 }
 
 [data-reisen="start-menu"][style*="background-image"],
 [data-reisen="settings-menu"][style*="background-image"],
-[data-reisen="gallery-menu"][style*="background-image"] {
+[data-reisen="gallery-menu"][style*="background-image"],
+[data-reisen="credits-menu"][style*="background-image"] {
   background: rgba(0, 0, 0, 0.6);
 }
 
 @media (prefers-color-scheme: light) {
   [data-reisen="start-menu"][style*="background-image"],
   [data-reisen="settings-menu"][style*="background-image"],
-  [data-reisen="gallery-menu"][style*="background-image"] {
+  [data-reisen="gallery-menu"][style*="background-image"],
+  [data-reisen="credits-menu"][style*="background-image"] {
     background: rgba(255, 255, 255, 0.6);
   }
+}
+
+[data-reisen="credits-content"] {
+  width: min(860px, 92vw);
+  max-height: min(70vh, 760px);
+  overflow: auto;
+  padding: 28px 32px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  line-height: 1.75;
+  font-size: clamp(15px, 1.8vw, 18px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.35);
+  white-space: pre-wrap;
+}
+
+[data-reisen="credits-content"] h1,
+[data-reisen="credits-content"] h2,
+[data-reisen="credits-content"] h3 {
+  margin: 0 0 12px;
+  letter-spacing: 0.03em;
+}
+
+[data-reisen="credits-content"] p {
+  margin: 0 0 12px;
+}
+
+[data-reisen="credits-actions"] {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+[data-reisen="credits-actions"] button {
+  min-width: 180px;
+  padding: 14px 30px;
+  background: var(--button-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+[data-reisen="credits-actions"] button:hover,
+[data-reisen="credits-actions"] button:focus-visible {
+  background: var(--button-hover);
+  border-color: var(--border-hover);
 }
 
 [data-reisen="gallery-toolbar"] {
