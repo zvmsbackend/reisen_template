@@ -50,7 +50,7 @@
     "game_toggle_on_prefix": "☑ ",
     "game_toggle_off_prefix": "☐ ",
     "game_text_input_submit": "Submit",
-    "game_log_building": "Building log..."
+    "loading_text": "Loading..."
   },
   "ja": {
     "start_locale_title": "言語を選択",
@@ -103,7 +103,7 @@
     "game_toggle_on_prefix": "☑ ",
     "game_toggle_off_prefix": "☐ ",
     "game_text_input_submit": "送信",
-    "game_log_building": "ログを構築中..."
+    "loading_text": "読み込み中..."
   },
   "zh": {
     "start_locale_title": "选择语言",
@@ -156,6 +156,6 @@
     "game_toggle_on_prefix": "☑ ",
     "game_toggle_off_prefix": "☐ ",
     "game_text_input_submit": "提交",
-    "game_log_building": "正在构建日志..."
+    "loading_text": "加载中..."
   }
 }

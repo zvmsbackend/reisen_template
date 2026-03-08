@@ -280,6 +280,16 @@ html, body {
   border-color: var(--border-hover);
 }
 
+[data-reisen="loading-menu"] {
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.72));
+}
+
+[data-reisen="loading-text"] {
+  font-family: "Cormorant Garamond", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 [data-reisen="gallery-toolbar"] {
   position: absolute;
   top: 16px;
