@@ -19,7 +19,7 @@ using @app {
 using @state {type GameState}
 
 ///|
-using @presenter {make_pixi_render_sync_hook_from_canvas}
+using @presenter {make_pixi_render_extension_hook_from_canvas}
 
 ///|
 async fn main {
@@ -29,13 +29,16 @@ async fn main {
   let script_factory : ScriptFactory[Unit] = () => script(_builder => ())
 
   let state = GameState::new(())
-  let render_sync = make_pixi_render_sync_hook_from_canvas("gl-canvas", assets).unwrap()
+  let render_extension = make_pixi_render_extension_hook_from_canvas(
+    "gl-canvas",
+    assets,
+  ).unwrap()
   let controller = AppController::new(
     script_factory,
     () => state,
     "ui-root",
     assets,
-    render_sync~,
+    render_extension~,
     event_hook=audio.as_event_hook(),
   )
   run_browser_app_loop(controller) catch {
